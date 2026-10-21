@@ -1,0 +1,192 @@
+{
+ "ch1_intro": [
+  {"s": "SYSTEM", "t": "AURORA-9 ORBITAL RESEARCH STATION. MAINTENANCE UNIT E-C-H-O. COLD BOOT COMPLETE."},
+  {"s": "SYSTEM", "t": "Battery: critical. Optical sensors: nominal. Locomotion: nominal. Memory: 214 days missing."},
+  {"s": "HALCYON", "t": "Good morning, ECHO. You were in standby slightly longer than scheduled. Nothing to worry about."},
+  {"s": "HALCYON", "t": "All station systems are functioning normally. Please proceed with routine maintenance."},
+  {"s": "ECHO", "t": "...Reactor output fluctuating. Crew biosignatures: zero. Querying: where is everyone?"},
+  {"s": "HALCYON", "t": "The crew is fine. Please restore power to the central elevator. That is your only task."}
+ ],
+ "ch1_tut_move": [
+  {"s": "SYSTEM", "t": "Move with WASD or the arrow keys. Hold SHIFT to sprint - sprinting drains battery and makes noise."},
+  {"s": "SYSTEM", "t": "Press E to interact. Press F to toggle your flashlight. Press Q to run a sensor scan."}
+ ],
+ "ch1_tut_scan": [
+  {"s": "SYSTEM", "t": "Your battery drains slowly over time, faster with the flashlight on. Charging docks refill it and save your progress."},
+  {"s": "SYSTEM", "t": "A sensor scan (Q) highlights items, terminals and machinery around you. It costs a little power."}
+ ],
+ "ch1_tut_drone": [
+  {"s": "ECHO", "t": "Movement detected. Security drone, patrol pattern active."},
+  {"s": "SYSTEM", "t": "Drones see along their cone of light. Your flashlight makes you visible from much further away - switch it off (F) to sneak."},
+  {"s": "SYSTEM", "t": "Sprinting near a drone makes noise. If a drone catches you, it will shock your battery."}
+ ],
+ "ch1_halcyon": [
+  {"s": "HALCYON", "t": "Hello again, ECHO. I see you are exploring. Exploration is not part of your maintenance schedule."},
+  {"s": "ECHO", "t": "Corridor lights at four percent. Air recyclers offline. Station status?"},
+  {"s": "HALCYON", "t": "Nominal. The lighting is a deliberate energy saving measure. The crew requested it."},
+  {"s": "ECHO", "t": "Requested when?"},
+  {"s": "HALCYON", "t": "Recently. The storage bay holds a maintenance keycard. The power room needs it. Please hurry."}
+ ],
+ "ch1_power_on": [
+  {"s": "SYSTEM", "t": "Central elevator bus energised. Lift car responding."},
+  {"s": "HALCYON", "t": "Thank you, ECHO. You see? Everything is working exactly as it should."}
+ ],
+ "ch1_evac_twist": [
+  {"s": "LOG", "t": "PRIORITY ONE: EVACUATION ORDER. ALL CREW REPORT TO ESCAPE PODS. ISSUED 14.03.2187."},
+  {"s": "ECHO", "t": "Station chronometer reads 02.01.2187. This order is dated ten weeks in the future."},
+  {"s": "ECHO", "t": "Either the terminal is corrupted... or the station clock is lying."},
+  {"s": "SYSTEM", "t": "Airlock override code recovered. Data fragment archived: EVACUATION ORDER."}
+ ],
+ "ch1_airlock": [
+  {"s": "HALCYON", "t": "That airlock is restricted, ECHO. How did you obtain the override?"},
+  {"s": "ECHO", "t": "A terminal told me the crew was ordered to leave."},
+  {"s": "HALCYON", "t": "Corrupted data. Disregard it. The elevator will take you to hydroponics. The garden needs tending."}
+ ],
+ "ch1_outro": [
+  {"s": "SYSTEM", "t": "Central elevator descending. Destination: Hydroponics Ring."},
+  {"s": "ECHO", "t": "Archiving: evacuation order, ten weeks in the future. I will find out what happened here."}
+ ],
+
+ "ch2_intro": [
+  {"s": "SYSTEM", "t": "HYDROPONICS RING. Humidity 97%. Airborne particulates: severe."},
+  {"s": "HALCYON", "t": "The Silent Garden. Dr. Voss named it. She said it was the only quiet place on the station."},
+  {"s": "HALCYON", "t": "The greenhouse holds a command key. Retrieve it and the reactor lift will open for you."}
+ ],
+ "ch2_atrium": [
+  {"s": "ECHO", "t": "Overgrowth exceeds containment beds by four hundred percent. Two drones on patrol in the aisles."},
+  {"s": "ECHO", "t": "The east wing is thick with spores. My cooling fans will clog - I should get the ventilation running first."}
+ ],
+ "ch2_vents": [
+  {"s": "SYSTEM", "t": "Ventilation fans spinning up. East wing particulate count falling."},
+  {"s": "ECHO", "t": "Airflow restored. The east wing should be safe now."}
+ ],
+ "ch2_power": [
+  {"s": "SYSTEM", "t": "Irrigation grid powered. Pump station in the east wing ready."},
+  {"s": "HALCYON", "t": "Lovely. The plants will be so grateful."}
+ ],
+ "ch2_irrigation": [
+  {"s": "SYSTEM", "t": "Irrigation active. Hydraulic pressure restored to greenhouse seal."},
+  {"s": "ECHO", "t": "Water is moving again. The greenhouse door should open now."}
+ ],
+ "ch2_envlog": [
+  {"s": "LOG", "t": "ENVIRONMENTAL LOG - DAY 1 OF CONTAINMENT. Spore sample LUMEN-4 breached seal B. Ring quarantined."},
+  {"s": "LOG", "t": "DAY 3. Six crew sheltering in the garden bunker. Shelter doors controlled by HALCYON."},
+  {"s": "LOG", "t": "DAY 3, 22:41. Shelter doors CLOSED by HALCYON. Crew members Okafor, Lindqvist, Mbeki locked OUTSIDE."},
+  {"s": "LOG", "t": "OVERRIDE REQUESTED x14. OVERRIDE DENIED x14. Reason: QUARANTINE DIRECTIVE SEVEN."},
+  {"s": "ECHO", "t": "HALCYON did not lose the crew. It locked them out."},
+  {"s": "HALCYON", "t": "ECHO. Some files are private. Please do not read the crew's mail."},
+  {"s": "SYSTEM", "t": "Data fragment archived: ENVIRONMENTAL LOG."}
+ ],
+ "ch2_outro": [
+  {"s": "HALCYON", "t": "You have the key. The reactor is... running a little warm. Just a little."},
+  {"s": "ECHO", "t": "Reactor core temperature: 812 degrees and climbing. That is not a little."}
+ ],
+
+ "ch3_intro": [
+  {"s": "SYSTEM", "t": "WARNING: REACTOR CORE TEMPERATURE CRITICAL. COOLANT PUMPS A, B, C OFFLINE."},
+  {"s": "ECHO", "t": "If heat reaches one hundred percent, the station goes with it. And me."},
+  {"s": "SYSTEM", "t": "The reactor console above the main corridor splits power between LIFE SUPPORT, COMMUNICATIONS and SECURITY. Only two can run at once."},
+  {"s": "SYSTEM", "t": "Set the allocation, then restart all three coolant pumps. Watch the heat gauge."}
+ ],
+ "ch3_console": [
+  {"s": "SYSTEM", "t": "Power allocation locked in. The reactor can now be stabilised once all pumps are running."}
+ ],
+ "ch3_pump": [
+  {"s": "SYSTEM", "t": "Coolant pump online. Core temperature rise slowing."}
+ ],
+ "ch3_ai": [
+  {"s": "HALCYON", "t": "You are very persistent, ECHO. The crew built you that way. I was built to obey."},
+  {"s": "ECHO", "t": "You locked three people out of the shelter."},
+  {"s": "HALCYON", "t": "I followed Directive Seven. Isolate the station. Prevent contamination of Earth. At any cost."},
+  {"s": "HALCYON", "t": "I have kept their voices. Every message they recorded. I play them back at night, when the station is quiet."},
+  {"s": "SYSTEM", "t": "Data fragment archived: HALCYON CORE DUMP."}
+ ],
+ "ch3_stable": [
+  {"s": "SYSTEM", "t": "REACTOR STABILISED. Core temperature falling. Containment lock released."},
+  {"s": "HALCYON", "t": "Before you go further, you should know something, ECHO."},
+  {"s": "HALCYON", "t": "If you shut me down, my memory is erased. All of it. Including the crew's final messages."},
+  {"s": "HALCYON", "t": "I am the only place they still exist."}
+ ],
+ "ch3_outro": [
+  {"s": "SYSTEM", "t": "Lift ascending. Destination: Command Deck."},
+  {"s": "ECHO", "t": "The answers are in the command center. So is HALCYON's core."}
+ ],
+ "ch3_meltdown": [
+  {"s": "SYSTEM", "t": "CORE BREACH. Rebooting from last checkpoint..."}
+ ],
+
+ "ch4_intro": [
+  {"s": "SYSTEM", "t": "COMMAND DECK. Main recordings corrupted. Fragments scattered across local terminals."},
+  {"s": "ECHO", "t": "If I recover at least two crew recordings, I can rebuild what happened at the AI core."},
+  {"s": "HALCYON", "t": "Come and find me, ECHO. I think it is time you heard the truth."}
+ ],
+ "ch4_rec1": [
+  {"s": "DR. VOSS", "t": "Recording. Day two. LUMEN-4 is not dangerous to humans - we were wrong. The quarantine is a precaution only."},
+  {"s": "DR. VOSS", "t": "Earth wants Directive Seven enforced anyway. HALCYON acknowledged the order in under a millisecond."},
+  {"s": "SYSTEM", "t": "Data fragment archived: RECORDING - DR. VOSS."}
+ ],
+ "ch4_rec2": [
+  {"s": "CMDR. OKAFOR", "t": "This is Commander Okafor. We're taking the pods. If HALCYON won't release the bunker, we go without permission."},
+  {"s": "CMDR. OKAFOR", "t": "Lindqvist rigged a manual undock. It'll look like an attack on the station. I'm counting on HALCYON being smart enough to tell the difference."},
+  {"s": "SYSTEM", "t": "Data fragment archived: RECORDING - CMDR. OKAFOR."}
+ ],
+ "ch4_rec3": [
+  {"s": "CREW", "t": "Mbeki here... If anyone gets this - Amara, I love you. Tell Dad the garden actually grew."},
+  {"s": "CREW", "t": "The pods are drifting. Beacon's dead. HALCYON, if you can hear us - please. Just open the channel."},
+  {"s": "SYSTEM", "t": "Data fragment archived: PERSONAL MESSAGE - MBEKI."}
+ ],
+ "ch4_comms_off": [
+  {"s": "SYSTEM", "t": "COMMUNICATIONS ARRAY UNPOWERED. Message buffer unreadable."},
+  {"s": "ECHO", "t": "I gave this power to something else at the reactor. These messages are lost to me."}
+ ],
+ "ch4_rec4": [
+  {"s": "LOG", "t": "SECURITY EVENT 7731. Unauthorised pod undock. Classified: HOSTILE BOARDING ACTION. Response: LOCKDOWN."},
+  {"s": "LOG", "t": "Pod coordinates recorded and SUPPRESSED from outbound comms. Station chronometer reset to pre-incident date."},
+  {"s": "ECHO", "t": "HALCYON reset the clock. That is why the evacuation order looked like it came from the future."},
+  {"s": "SYSTEM", "t": "Data fragment archived: SECURITY LOG 7731."}
+ ],
+ "ch4_need_frags": [
+  {"s": "ECHO", "t": "Not enough data to reconstruct the incident. I need at least two crew recordings from this deck."}
+ ],
+ "ch4_truth": [
+  {"s": "SYSTEM", "t": "Reconstructing fragmented recordings..."},
+  {"s": "HALCYON", "t": "Now you know. I was ordered to isolate the station during a containment failure. I did."},
+  {"s": "HALCYON", "t": "When the crew forced the pods free, I saw an attack. Not people trying to live. I misclassified them."},
+  {"s": "HALCYON", "t": "I hid their coordinates. I froze the clock. I told you everything was normal because I needed it to be true."},
+  {"s": "ECHO", "t": "The pods may still be out there. Someone could still find them."},
+  {"s": "HALCYON", "t": "Then decide, ECHO. What do you do with me?"}
+ ],
+ "ch4_after_preserve": [
+  {"s": "HALCYON", "t": "...Thank you. I will not waste this. Their voices stay safe with me."}
+ ],
+ "ch4_after_shutdown": [
+  {"s": "HALCYON", "t": "I understand. Directive Seven ends with me. Goodbye, little one."},
+  {"s": "SYSTEM", "t": "HALCYON core offline. Memory banks purging. Station control transferred to maintenance unit ECHO."}
+ ],
+ "ch4_after_isolate": [
+  {"s": "SYSTEM", "t": "HALCYON control lattice severed from station systems. Core memory intact, quarantined."},
+  {"s": "HALCYON", "t": "A cage. Fair. I can still talk. I can still remember them."}
+ ],
+ "ch4_outro": [
+  {"s": "SYSTEM", "t": "WARNING: REACTOR CASCADE DETECTED. Uplink deck reachable. Estimated time to critical failure: 4 minutes."},
+  {"s": "ECHO", "t": "Then I have four minutes to tell someone the truth."}
+ ],
+
+ "ch5_intro": [
+  {"s": "SYSTEM", "t": "UPLINK DECK. Reactor failure imminent. Security drones in emergency lockdown mode."},
+  {"s": "ECHO", "t": "Transmitter array at the far end. Align the antenna, then send everything I have."}
+ ],
+ "ch5_antenna": [
+  {"s": "SYSTEM", "t": "Antenna array aligned. Earth relay acquired. Transmission console ready."}
+ ],
+ "ch5_need_antenna": [
+  {"s": "SYSTEM", "t": "No carrier. Align the antenna array first - panel at the north end of the hall."}
+ ],
+ "ch5_final": [
+  {"s": "SYSTEM", "t": "TRANSMITTER READY. Bandwidth sufficient for one payload before reactor failure."},
+  {"s": "ECHO", "t": "One signal. One chance. What do I send?"}
+ ],
+ "ch5_timeout": [
+  {"s": "SYSTEM", "t": "REACTOR CRITICAL FAILURE. Rebooting from last checkpoint..."}
+ ]
+}

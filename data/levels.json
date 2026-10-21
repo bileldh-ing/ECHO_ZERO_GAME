@@ -1,0 +1,2134 @@
+[
+ {
+  "id": "ch1",
+  "chapter": 1,
+  "title": "The Awakening",
+  "theme": "maint",
+  "music": "ambient",
+  "entities": [
+   {
+    "type": "dock",
+    "x": 4,
+    "y": 4,
+    "id": "dock1"
+   },
+   {
+    "type": "lamp",
+    "x": 5,
+    "y": 2,
+    "id": "lamp2",
+    "color": [
+     120,
+     200,
+     255
+    ],
+    "radius": 150
+   },
+   {
+    "type": "crate",
+    "x": 2,
+    "y": 2,
+    "id": "crate3"
+   },
+   {
+    "type": "barrel",
+    "x": 8,
+    "y": 6,
+    "id": "barrel4"
+   },
+   {
+    "type": "trigger",
+    "x": 3,
+    "y": 3,
+    "id": "t_move",
+    "w": 5,
+    "h": 3,
+    "dialogue": "ch1_tut_move"
+   },
+   {
+    "type": "door",
+    "x": 9,
+    "y": 4,
+    "id": "d_bay"
+   },
+   {
+    "type": "pickup",
+    "x": 13,
+    "y": 5,
+    "id": "b1",
+    "item": "battery"
+   },
+   {
+    "type": "terminal",
+    "x": 19,
+    "y": 4,
+    "id": "t_halcyon",
+    "dialogue": "ch1_halcyon"
+   },
+   {
+    "type": "trigger",
+    "x": 15,
+    "y": 4,
+    "id": "t_scan",
+    "w": 2,
+    "h": 2,
+    "dialogue": "ch1_tut_scan"
+   },
+   {
+    "type": "door",
+    "x": 15,
+    "y": 6,
+    "id": "d_store"
+   },
+   {
+    "type": "trigger",
+    "x": 14,
+    "y": 7,
+    "id": "t_drone",
+    "w": 3,
+    "h": 1,
+    "dialogue": "ch1_tut_drone"
+   },
+   {
+    "type": "crate",
+    "x": 13,
+    "y": 10,
+    "id": "crate12"
+   },
+   {
+    "type": "crate",
+    "x": 14,
+    "y": 10,
+    "id": "crate13"
+   },
+   {
+    "type": "crate",
+    "x": 17,
+    "y": 11,
+    "id": "crate14"
+   },
+   {
+    "type": "crate",
+    "x": 18,
+    "y": 11,
+    "id": "crate15"
+   },
+   {
+    "type": "crate",
+    "x": 11,
+    "y": 7,
+    "id": "crate16"
+   },
+   {
+    "type": "crate",
+    "x": 20,
+    "y": 7,
+    "id": "crate17"
+   },
+   {
+    "type": "barrel",
+    "x": 12,
+    "y": 12,
+    "id": "barrel18"
+   },
+   {
+    "type": "drone",
+    "x": 11,
+    "y": 9,
+    "id": "dr1",
+    "path": [
+     [
+      11,
+      9
+     ],
+     [
+      20,
+      9
+     ],
+     [
+      20,
+      13
+     ],
+     [
+      11,
+      13
+     ]
+    ]
+   },
+   {
+    "type": "pickup",
+    "x": 21,
+    "y": 14,
+    "id": "key1",
+    "item": "keycard_maint"
+   },
+   {
+    "type": "pickup",
+    "x": 10,
+    "y": 14,
+    "id": "b2",
+    "item": "battery"
+   },
+   {
+    "type": "door",
+    "x": 27,
+    "y": 6,
+    "id": "d_power",
+    "requires": [
+     "item:keycard_maint"
+    ],
+    "locked_msg": "Access requires a MAINTENANCE keycard."
+   },
+   {
+    "type": "lamp",
+    "x": 24,
+    "y": 8,
+    "id": "lamp23",
+    "color": [
+     255,
+     220,
+     160
+    ],
+    "radius": 170,
+    "flag": "elevator_power"
+   },
+   {
+    "type": "lamp",
+    "x": 30,
+    "y": 8,
+    "id": "lamp24",
+    "color": [
+     255,
+     220,
+     160
+    ],
+    "radius": 170,
+    "flag": "elevator_power"
+   },
+   {
+    "type": "pipe",
+    "x": 23,
+    "y": 10,
+    "id": "pipe25",
+    "vertical": true
+   },
+   {
+    "type": "pipe",
+    "x": 23,
+    "y": 11,
+    "id": "pipe26",
+    "vertical": true
+   },
+   {
+    "type": "panel",
+    "x": 27,
+    "y": 12,
+    "id": "p_elev",
+    "sets": "elevator_power",
+    "dialogue_after": "ch1_power_on",
+    "puzzle": {
+     "w": 5,
+     "h": 4,
+     "source": [
+      0,
+      1
+     ],
+     "paths": [
+      [
+       [
+        0,
+        1
+       ],
+       [
+        1,
+        1
+       ],
+       [
+        2,
+        1
+       ],
+       [
+        2,
+        2
+       ],
+       [
+        2,
+        3
+       ],
+       [
+        3,
+        3
+       ],
+       [
+        4,
+        3
+       ]
+      ]
+     ],
+     "broken": [],
+     "decoys": 0.5,
+     "seed": 11
+    }
+   },
+   {
+    "type": "cipher",
+    "x": 27,
+    "y": 1,
+    "id": "c_evac",
+    "text": "EVACUATION ORDER ISSUED 14.03.2187 ALL CREW TO PODS",
+    "shift": 7,
+    "sets": "airlock_code",
+    "fragment": "frag_evac",
+    "dialogue_after": "ch1_evac_twist"
+   },
+   {
+    "type": "sparks",
+    "x": 27,
+    "y": 1,
+    "id": "sparks29"
+   },
+   {
+    "type": "pickup",
+    "x": 25,
+    "y": 1,
+    "id": "b3",
+    "item": "battery"
+   },
+   {
+    "type": "door",
+    "x": 32,
+    "y": 4,
+    "id": "d_airlock",
+    "requires": [
+     "flag:airlock_code"
+    ],
+    "locked_msg": "AIRLOCK SEALED. Override code required.",
+    "airlock": true
+   },
+   {
+    "type": "lamp",
+    "x": 37,
+    "y": 3,
+    "id": "lamp32",
+    "color": [
+     120,
+     200,
+     255
+    ],
+    "radius": 160,
+    "flag": "elevator_power"
+   },
+   {
+    "type": "exit",
+    "x": 40,
+    "y": 5,
+    "id": "exit1",
+    "requires": [
+     "flag:elevator_power"
+    ],
+    "locked_msg": "Elevator has no power.",
+    "next": "ch2",
+    "dialogue": "ch1_outro"
+   },
+   {
+    "type": "trigger",
+    "x": 34,
+    "y": 4,
+    "id": "t_air",
+    "w": 2,
+    "h": 2,
+    "dialogue": "ch1_airlock"
+   }
+  ],
+  "objectives": [
+   {
+    "text": "Leave the charging bay",
+    "done": "flag:opened:d_bay"
+   },
+   {
+    "text": "Find a maintenance keycard",
+    "done": "item:keycard_maint"
+   },
+   {
+    "text": "Restore power to the central elevator",
+    "done": "flag:elevator_power"
+   },
+   {
+    "text": "Recover the airlock override code",
+    "done": "flag:airlock_code"
+   },
+   {
+    "text": "Ride the central elevator",
+    "done": "flag:never"
+   }
+  ],
+  "intro": "ch1_intro",
+  "start": [
+   4,
+   4
+  ],
+  "map": [
+   "                        #######             ",
+   " ##WW#WWW#              #.....#             ",
+   " #.......#              #.....# ##WW#WWWWW# ",
+   " #.......####W#WW##WW#W####.#####.........# ",
+   " #........................................# ",
+   " #.......#:..:..:..:..:..:..:..:#..::::::.# ",
+   " #.......######.###########.#####.........# ",
+   " #########............#.........#.........# ",
+   "         #............#.........#.........# ",
+   "         #............#.........########### ",
+   "         #............#.........#           ",
+   "         #............#.........#           ",
+   "         #............#.........#           ",
+   "         #............###########           ",
+   "         #............#                     ",
+   "         ##############                     ",
+   "                                            ",
+   "                                            "
+  ]
+ },
+ {
+  "id": "ch2",
+  "chapter": 2,
+  "title": "The Silent Garden",
+  "theme": "garden",
+  "music": "ambient",
+  "entities": [
+   {
+    "type": "dock",
+    "x": 3,
+    "y": 14,
+    "id": "dock2"
+   },
+   {
+    "type": "lamp",
+    "x": 4,
+    "y": 13,
+    "id": "lamp2",
+    "color": [
+     140,
+     255,
+     190
+    ],
+    "radius": 150
+   },
+   {
+    "type": "exit",
+    "x": 2,
+    "y": 17,
+    "id": "lift_back",
+    "requires": [
+     "flag:never"
+    ],
+    "locked_msg": "The lift will not go back up."
+   },
+   {
+    "type": "door",
+    "x": 8,
+    "y": 15,
+    "id": "d_atrium"
+   },
+   {
+    "type": "trigger",
+    "x": 9,
+    "y": 14,
+    "id": "t_garden",
+    "w": 1,
+    "h": 3,
+    "dialogue": "ch2_atrium"
+   },
+   {
+    "type": "terminal",
+    "x": 9,
+    "y": 6,
+    "id": "t_env",
+    "dialogue": "ch2_envlog",
+    "fragment": "frag_garden"
+   },
+   {
+    "type": "pickup",
+    "x": 28,
+    "y": 23,
+    "id": "b1",
+    "item": "battery"
+   },
+   {
+    "type": "pickup",
+    "x": 9,
+    "y": 23,
+    "id": "b2",
+    "item": "battery"
+   },
+   {
+    "type": "plant",
+    "x": 16,
+    "y": 11,
+    "id": "plant9",
+    "variant": 0
+   },
+   {
+    "type": "plant",
+    "x": 22,
+    "y": 11,
+    "id": "plant10",
+    "variant": 1
+   },
+   {
+    "type": "plant",
+    "x": 15,
+    "y": 22,
+    "id": "plant11",
+    "variant": 2
+   },
+   {
+    "type": "plant",
+    "x": 27,
+    "y": 22,
+    "id": "plant12",
+    "variant": 0
+   },
+   {
+    "type": "drone",
+    "x": 10,
+    "y": 10,
+    "id": "dr1",
+    "path": [
+     [
+      10,
+      10
+     ],
+     [
+      27,
+      10
+     ],
+     [
+      27,
+      11
+     ],
+     [
+      10,
+      11
+     ]
+    ]
+   },
+   {
+    "type": "drone",
+    "x": 27,
+    "y": 17,
+    "id": "dr2",
+    "path": [
+     [
+      27,
+      17
+     ],
+     [
+      10,
+      17
+     ],
+     [
+      10,
+      18
+     ],
+     [
+      27,
+      18
+     ]
+    ]
+   },
+   {
+    "type": "lamp",
+    "x": 12,
+    "y": 6,
+    "id": "lamp15",
+    "color": [
+     150,
+     255,
+     170
+    ],
+    "radius": 130,
+    "flag": "garden_power"
+   },
+   {
+    "type": "lamp",
+    "x": 20,
+    "y": 22,
+    "id": "lamp16",
+    "color": [
+     150,
+     255,
+     170
+    ],
+    "radius": 130,
+    "flag": "garden_power"
+   },
+   {
+    "type": "lamp",
+    "x": 26,
+    "y": 6,
+    "id": "lamp17",
+    "color": [
+     150,
+     255,
+     170
+    ],
+    "radius": 130,
+    "flag": "garden_power"
+   },
+   {
+    "type": "door",
+    "x": 8,
+    "y": 21,
+    "id": "d_store"
+   },
+   {
+    "type": "pickup",
+    "x": 3,
+    "y": 24,
+    "id": "comp1",
+    "item": "component"
+   },
+   {
+    "type": "pickup",
+    "x": 6,
+    "y": 20,
+    "id": "b3",
+    "item": "battery"
+   },
+   {
+    "type": "crate",
+    "x": 2,
+    "y": 20,
+    "id": "crate21"
+   },
+   {
+    "type": "crate",
+    "x": 7,
+    "y": 25,
+    "id": "crate22"
+   },
+   {
+    "type": "barrel",
+    "x": 2,
+    "y": 22,
+    "id": "barrel23"
+   },
+   {
+    "type": "door",
+    "x": 18,
+    "y": 5,
+    "id": "d_vent"
+   },
+   {
+    "type": "panel",
+    "x": 17,
+    "y": 1,
+    "id": "p_vent",
+    "sets": "vents_on",
+    "dialogue_after": "ch2_vents",
+    "puzzle": {
+     "w": 5,
+     "h": 4,
+     "source": [
+      0,
+      0
+     ],
+     "paths": [
+      [
+       [
+        0,
+        0
+       ],
+       [
+        1,
+        0
+       ],
+       [
+        2,
+        0
+       ],
+       [
+        2,
+        1
+       ],
+       [
+        2,
+        2
+       ],
+       [
+        3,
+        2
+       ],
+       [
+        4,
+        2
+       ],
+       [
+        4,
+        3
+       ]
+      ]
+     ],
+     "broken": [
+      [
+       2,
+       1
+      ]
+     ],
+     "decoys": 0.5,
+     "seed": 21
+    }
+   },
+   {
+    "type": "lamp",
+    "x": 15,
+    "y": 2,
+    "id": "lamp26",
+    "color": [
+     150,
+     255,
+     200
+    ],
+    "radius": 120,
+    "flag": "vents_on"
+   },
+   {
+    "type": "door",
+    "x": 29,
+    "y": 9,
+    "id": "d_east"
+   },
+   {
+    "type": "hazard",
+    "x": 30,
+    "y": 6,
+    "id": "spores",
+    "w": 10,
+    "h": 10,
+    "drain": 7.0,
+    "disabled_by": "vents_on",
+    "kind": "spores"
+   },
+   {
+    "type": "panel",
+    "x": 39,
+    "y": 6,
+    "id": "p_junction",
+    "sets": "garden_power",
+    "dialogue_after": "ch2_power",
+    "puzzle": {
+     "w": 6,
+     "h": 4,
+     "source": [
+      0,
+      3
+     ],
+     "paths": [
+      [
+       [
+        0,
+        3
+       ],
+       [
+        1,
+        3
+       ],
+       [
+        1,
+        2
+       ],
+       [
+        1,
+        1
+       ],
+       [
+        1,
+        0
+       ],
+       [
+        2,
+        0
+       ],
+       [
+        3,
+        0
+       ],
+       [
+        3,
+        1
+       ],
+       [
+        3,
+        2
+       ],
+       [
+        4,
+        2
+       ],
+       [
+        5,
+        2
+       ]
+      ]
+     ],
+     "broken": [],
+     "decoys": 0.5,
+     "seed": 22
+    }
+   },
+   {
+    "type": "switch",
+    "x": 34,
+    "y": 15,
+    "id": "s_irrig",
+    "requires": [
+     "flag:garden_power"
+    ],
+    "sets": "irrigation_on",
+    "locked_msg": "Irrigation pump has no power.",
+    "dialogue_after": "ch2_irrigation"
+   },
+   {
+    "type": "plant",
+    "x": 31,
+    "y": 8,
+    "id": "plant31",
+    "variant": 1
+   },
+   {
+    "type": "plant",
+    "x": 36,
+    "y": 11,
+    "id": "plant32",
+    "variant": 1
+   },
+   {
+    "type": "plant",
+    "x": 32,
+    "y": 13,
+    "id": "plant33",
+    "variant": 1
+   },
+   {
+    "type": "pickup",
+    "x": 38,
+    "y": 13,
+    "id": "b4",
+    "item": "battery"
+   },
+   {
+    "type": "door",
+    "x": 29,
+    "y": 21,
+    "id": "d_green",
+    "requires": [
+     "flag:irrigation_on"
+    ],
+    "locked_msg": "Hydraulic seal. No irrigation pressure."
+   },
+   {
+    "type": "drone",
+    "x": 30,
+    "y": 18,
+    "id": "dr3",
+    "path": [
+     [
+      30,
+      18
+     ],
+     [
+      40,
+      18
+     ],
+     [
+      40,
+      25
+     ],
+     [
+      30,
+      25
+     ]
+    ],
+    "pingpong": false
+   },
+   {
+    "type": "pickup",
+    "x": 41,
+    "y": 22,
+    "id": "ckey",
+    "item": "command_key"
+   },
+   {
+    "type": "lamp",
+    "x": 35,
+    "y": 22,
+    "id": "lamp38",
+    "color": [
+     170,
+     255,
+     150
+    ],
+    "radius": 160,
+    "flag": "irrigation_on"
+   },
+   {
+    "type": "door",
+    "x": 40,
+    "y": 9,
+    "id": "d_exit",
+    "requires": [
+     "item:command_key"
+    ],
+    "locked_msg": "Command key required."
+   },
+   {
+    "type": "exit",
+    "x": 44,
+    "y": 9,
+    "id": "exit2",
+    "next": "ch3",
+    "dialogue": "ch2_outro"
+   }
+  ],
+  "objectives": [
+   {
+    "text": "Find a way through the garden",
+    "done": "flag:opened:d_atrium"
+   },
+   {
+    "text": "Restore power to the irrigation grid",
+    "done": "flag:garden_power"
+   },
+   {
+    "text": "Activate irrigation",
+    "done": "flag:irrigation_on"
+   },
+   {
+    "text": "Recover the command key from the greenhouse",
+    "done": "item:command_key"
+   },
+   {
+    "text": "Reach the reactor lift",
+    "done": "flag:never"
+   }
+  ],
+  "intro": "ch2_intro",
+  "start": [
+   4,
+   15
+  ],
+  "map": [
+   "              ########                          ",
+   "              #......#                          ",
+   "              #......#                          ",
+   "              #......#                          ",
+   "              #......#                          ",
+   "        ##WW######.########W##WWW##W#WW##       ",
+   "        #....................#..........#       ",
+   "        #;;\"\"\"\";;\"\"\"\";;\"\"\"\";;#..........####W## ",
+   "        #;;\"\"\"\";;\"\"\"\";;\"\"\"\";;#..........#.....# ",
+   "        #;;\"\"\"\";;\"\"\"\";;\"\"\"\";;.................# ",
+   "        #;;;;;;;;;;;;;;;;;;;;#..........#.....# ",
+   "        #;;;;;;;;;;;;;;;;;;;;#..........#.....# ",
+   " #W#W#W##;;\"\"\"\";;\"\"\"\";;\"\"\"\";;#..........####### ",
+   " #......#;;\"\"\"\";;\"\"\"\";;\"\"\"\";;#..........#       ",
+   " #......#;;\"\"\"\";;\"\"\"\";;\"\"\"\";;#..........#       ",
+   " #.......;;;;;;;;;;;;;;;;;;;;#..........#       ",
+   " #......#~~~,~~~~~,~~~~~,~~~~############       ",
+   " #......#;;;;;;;;;;;;;;;;;;;;############W#     ",
+   " ########;;;;;;;;;;;;;;;;;;;;#;;;;;;;;;;;;#     ",
+   " ########;;\"\"\"\";;\"\"\"\";;\"\"\"\";;#;\"\"\";;\"\"\";;;#     ",
+   " #......#;;\"\"\"\";;\"\"\"\";;\"\"\"\";;#;\"\"\";;\"\"\";;;#     ",
+   " #.......;;\"\"\"\";;\"\"\"\";;\"\"\"\";;.;;;;;;;;;;;;#     ",
+   " #......#;;;;;;;;;;;;;;;;;;;;#;;;;;;;;;;;;#     ",
+   " #......#;;;;;;;;;;;;;;;;;;;;#;\"\"\";;\"\"\";;;#     ",
+   " #......######################;\"\"\";;\"\"\";;;#     ",
+   " #......#                    #;;;;;;;;;;;;#     ",
+   " ########                    ##############     ",
+   "                                                "
+  ]
+ },
+ {
+  "id": "ch3",
+  "chapter": 3,
+  "title": "The Reactor",
+  "theme": "reactor",
+  "music": "ambient",
+  "entities": [
+   {
+    "type": "dock",
+    "x": 3,
+    "y": 5,
+    "id": "dock3"
+   },
+   {
+    "type": "lamp",
+    "x": 4,
+    "y": 2,
+    "id": "lamp2",
+    "color": [
+     255,
+     170,
+     110
+    ],
+    "radius": 150
+   },
+   {
+    "type": "door",
+    "x": 8,
+    "y": 4,
+    "id": "d_entry"
+   },
+   {
+    "type": "console",
+    "x": 22,
+    "y": 1,
+    "id": "console",
+    "dialogue_after": "ch3_console"
+   },
+   {
+    "type": "terminal",
+    "x": 25,
+    "y": 1,
+    "id": "t_ai",
+    "dialogue": "ch3_ai",
+    "fragment": "frag_reactor"
+   },
+   {
+    "type": "door",
+    "x": 23,
+    "y": 8,
+    "id": "d_chamber"
+   },
+   {
+    "type": "core",
+    "x": 22,
+    "y": 13,
+    "id": "core",
+    "w": 3,
+    "h": 3
+   },
+   {
+    "type": "drone",
+    "x": 16,
+    "y": 10,
+    "id": "dr1",
+    "path": [
+     [
+      16,
+      10
+     ],
+     [
+      31,
+      10
+     ],
+     [
+      31,
+      19
+     ],
+     [
+      16,
+      19
+     ]
+    ],
+    "requires_off": "security_off"
+   },
+   {
+    "type": "drone",
+    "x": 10,
+    "y": 5,
+    "id": "dr2",
+    "path": [
+     [
+      10,
+      5
+     ],
+     [
+      35,
+      5
+     ]
+    ],
+    "pingpong": true,
+    "requires_off": "security_off"
+   },
+   {
+    "type": "door",
+    "x": 14,
+    "y": 14,
+    "id": "d_pa"
+   },
+   {
+    "type": "panel",
+    "x": 6,
+    "y": 14,
+    "id": "p_a",
+    "sets": "coolant_a",
+    "dialogue_after": "ch3_pump",
+    "puzzle": {
+     "w": 6,
+     "h": 5,
+     "source": [
+      0,
+      2
+     ],
+     "paths": [
+      [
+       [
+        0,
+        2
+       ],
+       [
+        1,
+        2
+       ],
+       [
+        2,
+        2
+       ],
+       [
+        2,
+        1
+       ],
+       [
+        2,
+        0
+       ],
+       [
+        3,
+        0
+       ],
+       [
+        4,
+        0
+       ],
+       [
+        4,
+        1
+       ],
+       [
+        4,
+        2
+       ],
+       [
+        4,
+        3
+       ],
+       [
+        4,
+        4
+       ],
+       [
+        5,
+        4
+       ]
+      ]
+     ],
+     "broken": [],
+     "decoys": 0.5,
+     "seed": 31
+    }
+   },
+   {
+    "type": "pickup",
+    "x": 12,
+    "y": 16,
+    "id": "b1",
+    "item": "battery"
+   },
+   {
+    "type": "barrel",
+    "x": 7,
+    "y": 12,
+    "id": "barrel13"
+   },
+   {
+    "type": "lamp",
+    "x": 9,
+    "y": 12,
+    "id": "lamp14",
+    "color": [
+     120,
+     200,
+     255
+    ],
+    "radius": 130,
+    "flag": "coolant_a"
+   },
+   {
+    "type": "door",
+    "x": 33,
+    "y": 14,
+    "id": "d_pb"
+   },
+   {
+    "type": "panel",
+    "x": 41,
+    "y": 14,
+    "id": "p_b",
+    "sets": "coolant_b",
+    "dialogue_after": "ch3_pump",
+    "puzzle": {
+     "w": 6,
+     "h": 5,
+     "source": [
+      0,
+      0
+     ],
+     "paths": [
+      [
+       [
+        0,
+        0
+       ],
+       [
+        1,
+        0
+       ],
+       [
+        2,
+        0
+       ],
+       [
+        3,
+        0
+       ],
+       [
+        3,
+        1
+       ],
+       [
+        3,
+        2
+       ],
+       [
+        3,
+        3
+       ],
+       [
+        3,
+        4
+       ],
+       [
+        4,
+        4
+       ],
+       [
+        5,
+        4
+       ]
+      ],
+      [
+       [
+        3,
+        2
+       ],
+       [
+        4,
+        2
+       ],
+       [
+        5,
+        2
+       ]
+      ]
+     ],
+     "broken": [],
+     "decoys": 0.5,
+     "seed": 32
+    }
+   },
+   {
+    "type": "pickup",
+    "x": 35,
+    "y": 16,
+    "id": "b2",
+    "item": "battery"
+   },
+   {
+    "type": "barrel",
+    "x": 40,
+    "y": 12,
+    "id": "barrel18"
+   },
+   {
+    "type": "lamp",
+    "x": 37,
+    "y": 12,
+    "id": "lamp19",
+    "color": [
+     120,
+     200,
+     255
+    ],
+    "radius": 130,
+    "flag": "coolant_b"
+   },
+   {
+    "type": "door",
+    "x": 23,
+    "y": 21,
+    "id": "d_pc"
+   },
+   {
+    "type": "panel",
+    "x": 23,
+    "y": 26,
+    "id": "p_c",
+    "sets": "coolant_c",
+    "dialogue_after": "ch3_pump",
+    "puzzle": {
+     "w": 6,
+     "h": 5,
+     "source": [
+      0,
+      4
+     ],
+     "paths": [
+      [
+       [
+        0,
+        4
+       ],
+       [
+        0,
+        3
+       ],
+       [
+        0,
+        2
+       ],
+       [
+        0,
+        1
+       ],
+       [
+        1,
+        1
+       ],
+       [
+        2,
+        1
+       ],
+       [
+        2,
+        2
+       ],
+       [
+        2,
+        3
+       ],
+       [
+        3,
+        3
+       ],
+       [
+        4,
+        3
+       ],
+       [
+        5,
+        3
+       ]
+      ],
+      [
+       [
+        2,
+        1
+       ],
+       [
+        2,
+        0
+       ],
+       [
+        3,
+        0
+       ],
+       [
+        4,
+        0
+       ],
+       [
+        5,
+        0
+       ]
+      ]
+     ],
+     "broken": [
+      [
+       2,
+       2
+      ]
+     ],
+     "decoys": 0.5,
+     "seed": 33
+    }
+   },
+   {
+    "type": "pickup",
+    "x": 20,
+    "y": 22,
+    "id": "comp",
+    "item": "component"
+   },
+   {
+    "type": "pickup",
+    "x": 27,
+    "y": 25,
+    "id": "b3",
+    "item": "battery"
+   },
+   {
+    "type": "lamp",
+    "x": 21,
+    "y": 24,
+    "id": "lamp24",
+    "color": [
+     120,
+     200,
+     255
+    ],
+    "radius": 130,
+    "flag": "coolant_c"
+   },
+   {
+    "type": "door",
+    "x": 37,
+    "y": 5,
+    "id": "d_exit",
+    "requires": [
+     "flag:reactor_stable"
+    ],
+    "locked_msg": "Containment lock: reactor unstable."
+   },
+   {
+    "type": "exit",
+    "x": 42,
+    "y": 5,
+    "id": "exit3",
+    "next": "ch4",
+    "dialogue": "ch3_outro"
+   }
+  ],
+  "objectives": [
+   {
+    "text": "Set the power allocation at the reactor console",
+    "done": "flag:allocation_done"
+   },
+   {
+    "text": "Restart all three coolant pumps",
+    "done": "flag:coolant_all"
+   },
+   {
+    "text": "Leave the reactor deck",
+    "done": "flag:never"
+   }
+  ],
+  "intro": "ch3_intro",
+  "heat": {
+   "start": 30,
+   "rate": 0.45,
+   "per_coolant": 0.2,
+   "coolant": [
+    "coolant_a",
+    "coolant_b",
+    "coolant_c"
+   ],
+   "stable_flag": "reactor_stable",
+   "needs": [
+    "flag:allocation_done"
+   ]
+  },
+  "start": [
+   4,
+   4
+  ],
+  "map": [
+   "                   ########                   ",
+   " ###WW#W#          #......#                   ",
+   " #......#          #......#                   ",
+   " #......##W####W##W###..#######W####W#W###### ",
+   " #...................................#......# ",
+   " #......#...................................# ",
+   " #......#::::::::::::::::::::::::::::#......# ",
+   " ########............................#......# ",
+   "        ###############.##################### ",
+   "              #,,,,,,,,,,,,,,,,,,#            ",
+   "              #,,,,,,,,,,,,,,,,,,#            ",
+   "     #W##W#W###,,,,,,,,,,,,,,,,,,#W##WW#W##   ",
+   "     #........#,,,,,,,,,,,,,,,,,,#........#   ",
+   "     #........#,,,,,,,,,,,,,,,,,,#........#   ",
+   "     #.........,,,,,,,,,,,,,,,,,,.........#   ",
+   "     #........#,,,,,,,,,,,,,,,,,,#........#   ",
+   "     #........#,,,,,,,,,,,,,,,,,,#........#   ",
+   "     ##########,,,,,,,,,,,,,,,,,,##########   ",
+   "              #,,,,,,,,,,,,,,,,,,#            ",
+   "              #,,,,,,,,,,,,,,,,,,#            ",
+   "              #,,,,,,,,,,,,,,,,,,#            ",
+   "              #########.##########            ",
+   "                   #........#                 ",
+   "                   #........#                 ",
+   "                   #........#                 ",
+   "                   #........#                 ",
+   "                   #........#                 ",
+   "                   ##########                 ",
+   "                                              ",
+   "                                              "
+  ]
+ },
+ {
+  "id": "ch4",
+  "chapter": 4,
+  "title": "The Truth",
+  "theme": "command",
+  "music": "ambient",
+  "entities": [
+   {
+    "type": "dock",
+    "x": 3,
+    "y": 14,
+    "id": "dock4"
+   },
+   {
+    "type": "lamp",
+    "x": 4,
+    "y": 13,
+    "id": "lamp2",
+    "color": [
+     140,
+     190,
+     255
+    ],
+    "radius": 150
+   },
+   {
+    "type": "door",
+    "x": 8,
+    "y": 15,
+    "id": "d_hall"
+   },
+   {
+    "type": "holotable",
+    "x": 16,
+    "y": 13,
+    "id": "holo",
+    "w": 2,
+    "h": 2
+   },
+   {
+    "type": "terminal",
+    "x": 10,
+    "y": 9,
+    "id": "t_rec1",
+    "dialogue": "ch4_rec1",
+    "fragment": "frag_rec1"
+   },
+   {
+    "type": "terminal",
+    "x": 25,
+    "y": 21,
+    "id": "t_rec2",
+    "dialogue": "ch4_rec2",
+    "fragment": "frag_rec2"
+   },
+   {
+    "type": "drone",
+    "x": 10,
+    "y": 11,
+    "id": "dr1",
+    "path": [
+     [
+      10,
+      11
+     ],
+     [
+      25,
+      11
+     ],
+     [
+      25,
+      19
+     ],
+     [
+      10,
+      19
+     ]
+    ],
+    "requires_off": "security_off"
+   },
+   {
+    "type": "drone",
+    "x": 20,
+    "y": 9,
+    "id": "dr2",
+    "path": [
+     [
+      20,
+      9
+     ],
+     [
+      20,
+      21
+     ]
+    ],
+    "pingpong": true,
+    "requires_off": "security_off"
+   },
+   {
+    "type": "cryo",
+    "x": 11,
+    "y": 13,
+    "id": "cryo9"
+   },
+   {
+    "type": "cryo",
+    "x": 23,
+    "y": 17,
+    "id": "cryo10"
+   },
+   {
+    "type": "door",
+    "x": 16,
+    "y": 8,
+    "id": "d_comms"
+   },
+   {
+    "type": "terminal",
+    "x": 16,
+    "y": 2,
+    "id": "t_rec3",
+    "dialogue": "ch4_rec3",
+    "fragment": "frag_rec3",
+    "requires": [
+     "flag:comms_on"
+    ],
+    "locked_dialogue": "ch4_comms_off"
+   },
+   {
+    "type": "pickup",
+    "x": 20,
+    "y": 6,
+    "id": "b1",
+    "item": "battery"
+   },
+   {
+    "type": "lamp",
+    "x": 14,
+    "y": 3,
+    "id": "lamp14",
+    "color": [
+     140,
+     220,
+     255
+    ],
+    "radius": 130,
+    "flag": "comms_on"
+   },
+   {
+    "type": "door",
+    "x": 16,
+    "y": 22,
+    "id": "d_sec",
+    "requires": [
+     "flag:security_on"
+    ],
+    "locked_msg": "Security office: biometric lock unpowered."
+   },
+   {
+    "type": "terminal",
+    "x": 16,
+    "y": 27,
+    "id": "t_rec4",
+    "dialogue": "ch4_rec4",
+    "fragment": "frag_rec4"
+   },
+   {
+    "type": "pickup",
+    "x": 13,
+    "y": 23,
+    "id": "b2",
+    "item": "battery"
+   },
+   {
+    "type": "pickup",
+    "x": 20,
+    "y": 23,
+    "id": "b3",
+    "item": "battery"
+   },
+   {
+    "type": "door",
+    "x": 27,
+    "y": 15,
+    "id": "d_core"
+   },
+   {
+    "type": "aicore",
+    "x": 35,
+    "y": 10,
+    "id": "aicore",
+    "w": 3,
+    "h": 3
+   },
+   {
+    "type": "terminal",
+    "x": 34,
+    "y": 16,
+    "id": "t_truth",
+    "dialogue": "ch4_truth",
+    "requires": [
+     "frags:frag_rec1,frag_rec2,frag_rec3,frag_rec4>=2"
+    ],
+    "locked_dialogue": "ch4_need_frags",
+    "choice": "ai_fate"
+   },
+   {
+    "type": "pickup",
+    "x": 29,
+    "y": 23,
+    "id": "b4",
+    "item": "battery"
+   },
+   {
+    "type": "exit",
+    "x": 39,
+    "y": 22,
+    "id": "exit4",
+    "requires": [
+     "flag:fate_chosen"
+    ],
+    "locked_msg": "HALCYON will not release the uplink yet.",
+    "next": "ch5",
+    "dialogue": "ch4_outro"
+   }
+  ],
+  "objectives": [
+   {
+    "text": "Recover crew recordings (2 needed)",
+    "done": "frags:frag_rec1,frag_rec2,frag_rec3,frag_rec4>=2"
+   },
+   {
+    "text": "Reconstruct the truth at the AI core",
+    "done": "flag:fate_chosen"
+   },
+   {
+    "text": "Take the uplink lift",
+    "done": "flag:never"
+   }
+  ],
+  "intro": "ch4_intro",
+  "start": [
+   4,
+   15
+  ],
+  "map": [
+   "                                            ",
+   "            ###W######                      ",
+   "            #........#                      ",
+   "            #........#                      ",
+   "            #........#                      ",
+   "            #........#                      ",
+   "            #........#     ###W###W#WW###   ",
+   "            #........#     #............#   ",
+   "        #W######.######W##W#............#   ",
+   "        #..................#............#   ",
+   "        #..................#............#   ",
+   "        #..................#............#   ",
+   " #####W##..................#............#   ",
+   " #......#..................#............#   ",
+   " #......#..................#............#   ",
+   " #.......::::::::::::::::::.............#   ",
+   " #......#..................#............#   ",
+   " #......#..................#............#   ",
+   " ########..................#............#   ",
+   "        #..................#............#   ",
+   "        #..................#............#   ",
+   "        #..................#............#   ",
+   "        ########.###########............#   ",
+   "            #........#     #............#   ",
+   "            #........#     ##############   ",
+   "            #........#                      ",
+   "            #........#                      ",
+   "            #........#                      ",
+   "            ##########                      ",
+   "                                            "
+  ]
+ },
+ {
+  "id": "ch5",
+  "chapter": 5,
+  "title": "The Last Signal",
+  "theme": "signal",
+  "music": "tension",
+  "entities": [
+   {
+    "type": "lamp",
+    "x": 3,
+    "y": 9,
+    "id": "lamp1",
+    "color": [
+     255,
+     90,
+     80
+    ],
+    "radius": 150,
+    "alarm": true
+   },
+   {
+    "type": "door",
+    "x": 7,
+    "y": 11,
+    "id": "d_start"
+   },
+   {
+    "type": "pickup",
+    "x": 4,
+    "y": 13,
+    "id": "b0",
+    "item": "battery"
+   },
+   {
+    "type": "drone",
+    "x": 12,
+    "y": 10,
+    "id": "dr1",
+    "path": [
+     [
+      12,
+      10
+     ],
+     [
+      12,
+      12
+     ]
+    ],
+    "pingpong": true
+   },
+   {
+    "type": "drone",
+    "x": 19,
+    "y": 12,
+    "id": "dr2",
+    "path": [
+     [
+      19,
+      12
+     ],
+     [
+      19,
+      10
+     ]
+    ],
+    "pingpong": true
+   },
+   {
+    "type": "pickup",
+    "x": 24,
+    "y": 10,
+    "id": "b1",
+    "item": "battery"
+   },
+   {
+    "type": "debris",
+    "x": 9,
+    "y": 10,
+    "id": "debris7"
+   },
+   {
+    "type": "debris",
+    "x": 16,
+    "y": 12,
+    "id": "debris8"
+   },
+   {
+    "type": "debris",
+    "x": 22,
+    "y": 10,
+    "id": "debris9"
+   },
+   {
+    "type": "lamp",
+    "x": 16,
+    "y": 10,
+    "id": "lamp10",
+    "color": [
+     255,
+     90,
+     80
+    ],
+    "radius": 140,
+    "alarm": true
+   },
+   {
+    "type": "lamp",
+    "x": 30,
+    "y": 6,
+    "id": "lamp11",
+    "color": [
+     255,
+     90,
+     80
+    ],
+    "radius": 150,
+    "alarm": true
+   },
+   {
+    "type": "lamp",
+    "x": 30,
+    "y": 16,
+    "id": "lamp12",
+    "color": [
+     255,
+     90,
+     80
+    ],
+    "radius": 150,
+    "alarm": true
+   },
+   {
+    "type": "drone",
+    "x": 28,
+    "y": 5,
+    "id": "dr3",
+    "path": [
+     [
+      28,
+      5
+     ],
+     [
+      31,
+      5
+     ],
+     [
+      31,
+      17
+     ],
+     [
+      28,
+      17
+     ]
+    ]
+   },
+   {
+    "type": "pickup",
+    "x": 27,
+    "y": 18,
+    "id": "b2",
+    "item": "battery"
+   },
+   {
+    "type": "drone",
+    "x": 36,
+    "y": 4,
+    "id": "dr4",
+    "path": [
+     [
+      36,
+      4
+     ],
+     [
+      44,
+      4
+     ],
+     [
+      44,
+      6
+     ],
+     [
+      36,
+      6
+     ]
+    ]
+   },
+   {
+    "type": "pickup",
+    "x": 40,
+    "y": 6,
+    "id": "b3",
+    "item": "battery"
+   },
+   {
+    "type": "hazard",
+    "x": 34,
+    "y": 16,
+    "id": "fire",
+    "w": 12,
+    "h": 3,
+    "drain": 9.0,
+    "kind": "fire"
+   },
+   {
+    "type": "lamp",
+    "x": 50,
+    "y": 11,
+    "id": "lamp18",
+    "color": [
+     255,
+     90,
+     80
+    ],
+    "radius": 180,
+    "alarm": true
+   },
+   {
+    "type": "panel",
+    "x": 50,
+    "y": 4,
+    "id": "p_ant",
+    "sets": "antenna_aligned",
+    "dialogue_after": "ch5_antenna",
+    "puzzle": {
+     "w": 7,
+     "h": 5,
+     "source": [
+      0,
+      2
+     ],
+     "paths": [
+      [
+       [
+        0,
+        2
+       ],
+       [
+        1,
+        2
+       ],
+       [
+        2,
+        2
+       ],
+       [
+        2,
+        1
+       ],
+       [
+        2,
+        0
+       ],
+       [
+        3,
+        0
+       ],
+       [
+        4,
+        0
+       ],
+       [
+        4,
+        1
+       ],
+       [
+        4,
+        2
+       ],
+       [
+        4,
+        3
+       ],
+       [
+        4,
+        4
+       ],
+       [
+        5,
+        4
+       ],
+       [
+        6,
+        4
+       ]
+      ],
+      [
+       [
+        4,
+        2
+       ],
+       [
+        5,
+        2
+       ],
+       [
+        6,
+        2
+       ]
+      ]
+     ],
+     "broken": [],
+     "decoys": 0.5,
+     "seed": 51
+    }
+   },
+   {
+    "type": "transmitter",
+    "x": 51,
+    "y": 9,
+    "id": "dish",
+    "w": 2,
+    "h": 2
+   },
+   {
+    "type": "pickup",
+    "x": 48,
+    "y": 18,
+    "id": "b4",
+    "item": "battery"
+   },
+   {
+    "type": "terminal",
+    "x": 50,
+    "y": 15,
+    "id": "t_final",
+    "requires": [
+     "flag:antenna_aligned"
+    ],
+    "locked_dialogue": "ch5_need_antenna",
+    "dialogue": "ch5_final",
+    "choice": "ending"
+   }
+  ],
+  "objectives": [
+   {
+    "text": "Reach the transmitter array before the reactor fails",
+    "done": "flag:opened:d_start"
+   },
+   {
+    "text": "Align the antenna array",
+    "done": "flag:antenna_aligned"
+   },
+   {
+    "text": "Send the last signal",
+    "done": "flag:never"
+   }
+  ],
+  "intro": "ch5_intro",
+  "timer": 240,
+  "start": [
+   3,
+   11
+  ],
+  "map": [
+   "                                                        ",
+   "                                                        ",
+   "                                                        ",
+   "                          ####WW##W##WWWW#WWWW#WW##W### ",
+   "                          #......#............#.......# ",
+   "                          #...........................# ",
+   "                          #......#............#.......# ",
+   "                          #......##############.......# ",
+   " #W#WWW#                  #......#            #.......# ",
+   " #.....###WW#W###WW#W#W##W#......#            #.......# ",
+   " #.....#.........................#            #.......# ",
+   " #......::::::::::::::::::.......#            #.......# ",
+   " #.....#.........................#            #.......# ",
+   " #.....####################......#            #.......# ",
+   " #######                  #......#            #.......# ",
+   "                          #......##WW#W########.......# ",
+   "                          #......#............#.......# ",
+   "                          #...........................# ",
+   "                          #......#............#.......# ",
+   "                          ############################# ",
+   "                                                        ",
+   "                                                        "
+  ]
+ }
+]
