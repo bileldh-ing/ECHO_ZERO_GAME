@@ -27,6 +27,9 @@ class Game:
         except Exception:
             self.screen = pygame.display.set_mode((W, H), flags)
         assets.ensure_generated()
+        from systems import config, gamepad
+        config.load()
+        gamepad.init()
         try:
             icon = assets.image("echo_down_0")
             pygame.display.set_icon(icon)
@@ -75,7 +78,12 @@ class Game:
     # ------------------------------------------------------------------ loop
     def step(self, dt, events):
         self.time += dt
+        from systems import gamepad
+        mapped = []
         for e in events:
+            m = gamepad.translate(e) if e.type >= pygame.JOYAXISMOTION and e.type <= pygame.JOYDEVICEREMOVED else None
+            mapped.append(m or e)
+        for e in mapped:
             if e.type == pygame.QUIT:
                 self.running = False
             elif e.type == pygame.KEYDOWN and e.key == pygame.K_F11:
@@ -111,7 +119,8 @@ class Game:
 
     def run(self):
         from scenes.menu import Menu
-        self.push(Menu(self))
+        from scenes.overlays import Splash
+        self.push(Splash(self, Menu))
         while self.running and self.scenes:
             dt = min(self.clock.tick(FPS) / 1000.0, 1 / 20)
             self.step(dt, pygame.event.get())

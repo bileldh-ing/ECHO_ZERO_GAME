@@ -45,6 +45,10 @@ class Entity:
     def interactive(self):
         return False
 
+    def pending(self):
+        """Still something to do here (used by objective markers)."""
+        return True
+
     def prompt(self):
         return ""
 
@@ -105,6 +109,9 @@ class Door(Entity):
     def locked(self):
         ok, _ = self.state.check(self.reqs)
         return not ok
+
+    def pending(self):
+        return not self.opened
 
     def interactive(self):
         return not self.opened
@@ -187,6 +194,9 @@ class Pickup(Entity):
         if not self.taken and self.dist_to_player() < 20:
             self.collect()
 
+    def pending(self):
+        return not self.taken
+
     def collect(self):
         self.taken = True
         self.state.set_flag(f"taken:{self.uid}")
@@ -244,6 +254,12 @@ class Terminal(Entity):
     def online(self):
         return self.state.check(self.reqs)[0]
 
+    def pending(self):
+        frag = self.d.get("fragment")
+        if frag:
+            return self.online() and frag not in self.state.fragments
+        return not self.flag(f"read:{self.uid}") or bool(self.d.get("choice"))
+
     def interact(self):
         assets.play("beep", 0.6)
         if not self.online():
@@ -286,6 +302,9 @@ class CipherTerminal(Terminal):
     def online(self):
         return True
 
+    def pending(self):
+        return not self.flag(self.d["sets"])
+
     def prompt(self):
         return "[E] Decode corrupted terminal" if not self.flag(self.d["sets"]) else "[E] Read decoded order"
 
@@ -326,6 +345,9 @@ class Panel(Entity):
 
     def interactive(self):
         return True
+
+    def pending(self):
+        return not self.done
 
     def prompt(self):
         return "[E] Power conduit (online)" if self.done else "[E] Reroute power"
@@ -376,6 +398,9 @@ class Switch(Entity):
     def interactive(self):
         return not self.on
 
+    def pending(self):
+        return not self.on
+
     def prompt(self):
         return "[E] Activate pump"
 
@@ -402,6 +427,9 @@ class Console(Entity):
 
     def interactive(self):
         return True
+
+    def pending(self):
+        return not self.flag("allocation_done")
 
     def prompt(self):
         return "[E] Reactor power allocation"

@@ -49,14 +49,19 @@ class Player:
     def update(self, dt, keys, tilemap, can_sprint):
         ix = (keys[pygame.K_d] or keys[pygame.K_RIGHT]) - (keys[pygame.K_a] or keys[pygame.K_LEFT])
         iy = (keys[pygame.K_s] or keys[pygame.K_DOWN]) - (keys[pygame.K_w] or keys[pygame.K_UP])
+        from systems import gamepad
+        jx, jy = gamepad.stick()
+        if jx or jy:
+            ix, iy = jx, jy
         if self.dead:
             ix = iy = 0
-        mag = math.hypot(ix, iy)
-        want_sprint = keys[pygame.K_LSHIFT] or keys[pygame.K_RSHIFT]
+        mag = min(1.0, math.hypot(ix, iy))
+        want_sprint = keys[pygame.K_LSHIFT] or keys[pygame.K_RSHIFT] or gamepad.sprint_held()
         self.sprinting = bool(want_sprint and mag > 0 and can_sprint)
         speed = SPRINT_SPEED if self.sprinting else WALK_SPEED
         if mag > 0:
-            tx, ty = ix / mag * speed, iy / mag * speed
+            n = math.hypot(ix, iy)
+            tx, ty = ix / n * speed * mag, iy / n * speed * mag
             self.facing = angle_lerp(self.facing, math.atan2(iy, ix), min(1.0, dt * 14))
         else:
             tx = ty = 0.0

@@ -93,6 +93,12 @@ class Gameplay(Scene):
         self.stars = [(random.uniform(0, W), random.uniform(0, H), random.choice([0.15, 0.3, 0.5]),
                        random.randint(90, 255)) for _ in range(220)]
         self.overlay_surf = pygame.Surface((W, H), pygame.SRCALPHA)
+        self.hitstop = 0.0
+        self.MS = 4
+        self.explored = set()
+        self.minimap = pygame.Surface((self.tilemap.w * self.MS, self.tilemap.h * self.MS), pygame.SRCALPHA)
+        self.reveal_t = 0.0
+        self.reveal()
         self.checkpoint = state.clone()
         save_manager.save(self.checkpoint.to_dict())
 
@@ -170,13 +176,57 @@ class Gameplay(Scene):
         self.state.set_flag(f)
         self.rebake()
 
+    def reveal(self, radius=7):
+        tm = self.tilemap
+        px, py = int(self.player.x // TILE), int(self.player.y // TILE)
+        ms = self.MS
+        for y in range(py - radius, py + radius + 1):
+            for x in range(px - radius, px + radius + 1):
+                if (x, y) in self.explored or not (0 <= x < tm.w and 0 <= y < tm.h):
+                    continue
+                if (x - px) ** 2 + (y - py) ** 2 > radius * radius:
+                    continue
+                c = tm.ch(x, y)
+                if c == " ":
+                    continue
+                self.explored.add((x, y))
+                if c in "#W":
+                    col = (120, 140, 165, 255)
+                elif c in "~":
+                    col = (40, 90, 120, 255)
+                elif c == '"':
+                    col = (50, 90, 60, 255)
+                else:
+                    col = (34, 44, 58, 255)
+                self.minimap.fill(col, (x * ms, y * ms, ms, ms))
+
+    def objective(self):
+        for o in self.level.get("objectives", []):
+            if not self.state.check([o["done"]])[0]:
+                return o
+        return None
+
+    def objective_target(self):
+        o = self.objective()
+        if not o or not o.get("target"):
+            return None
+        best = None
+        for e in self.entities:
+            if e.id in o["target"] and e.pending():
+                d = math.hypot(e.x - self.player.x, e.y - self.player.y)
+                if best is None or d < best[0]:
+                    best = (d, e)
+        return best[1] if best else None
+
     # ================================================================== callbacks used by entities
     def toast(self, msg, color=WHITE):
         self.toasts.append([msg, color, 3.5])
         self.toasts = self.toasts[-4:]
 
     def shake(self, amt):
-        self.shake_amt = max(self.shake_amt, amt)
+        from systems import config
+        if config.get("shake"):
+            self.shake_amt = max(self.shake_amt, amt)
 
     def dialogue(self, key, on_done=None):
         lines = key if isinstance(key, list) else lines_for(key)
@@ -290,6 +340,7 @@ class Gameplay(Scene):
         self.particles.sparks(p.x, p.y - 12, 26)
         self.particles.emit(p.x, p.y - 12, 14, (120, 200, 255), speed=160, life=0.4, size=1)
         self.toast(f"Shocked by drone  -{int(DRONE_ZAP)}% battery", RED)
+        self.hitstop = 0.09
 
     def die(self, reason):
         if self.dead:
@@ -313,6 +364,11 @@ class Gameplay(Scene):
             assets.play("select", 0.6)
         elif e.key == pygame.K_q:
             self.do_scan()
+        elif e.key == pygame.K_m:
+            from systems import config
+            config.values["minimap"] = not config.values["minimap"]
+            config.save()
+            assets.play("select", 0.5)
         elif e.key in (pygame.K_TAB, pygame.K_i):
             self.game.push(InventoryView(self.game, self.state))
         elif e.key in (pygame.K_ESCAPE, pygame.K_p):
@@ -337,6 +393,13 @@ class Gameplay(Scene):
     # ================================================================== update
     def update(self, dt):
         self.t += dt
+        if self.hitstop > 0:
+            self.hitstop -= dt
+            return
+        self.reveal_t -= dt
+        if self.reveal_t <= 0:
+            self.reveal_t = 0.15
+            self.reveal()
         st = self.state
         if not self.dead and not self.leaving:
             st.playtime += dt
@@ -582,6 +645,7 @@ class Gameplay(Scene):
 
         if self.target and not self.dead:
             self.draw_prompt(surf, self.target, cx, cy)
+        self.draw_marker(surf, cx, cy)
 
         # ------------------------------------------------------------- screen effects
         if self.hazard_t > 0:
@@ -600,13 +664,74 @@ class Gameplay(Scene):
             hs = pygame.Surface((W, H), pygame.SRCALPHA)
             hs.fill((255, 80, 20, int((heat - 70) * 1.6 * (0.6 + 0.4 * math.sin(self.t * 6)))))
             surf.blit(hs, (0, 0))
-        surf.blit(post_fx(), (0, 0))
+        from systems import config
+        surf.blit(post_fx(config.get("scanlines")), (0, 0))
         if self.dead:
             d = pygame.Surface((W, H), pygame.SRCALPHA)
             d.fill((0, 0, 0, int(min(1.0, self.death_t / 1.2) * 170)))
             surf.blit(d, (0, 0))
 
         self.draw_hud(surf)
+
+    def draw_marker(self, surf, cx, cy):
+        tgt = self.objective_target()
+        if tgt is None or self.dead or tgt is self.target:
+            return
+        col = (255, 210, 90)
+        tx, ty = tgt.x - cx, tgt.ty * TILE - cy - 18
+        margin = 46
+        if margin < tx < W - margin and 110 < ty < H - 60:
+            bob = math.sin(self.t * 4) * 4
+            pts = [(tx, ty + bob + 8), (tx - 7, ty + bob - 2), (tx, ty + bob - 12), (tx + 7, ty + bob - 2)]
+            pygame.draw.polygon(surf, (0, 0, 0), [(x + 1, y + 2) for x, y in pts])
+            pygame.draw.polygon(surf, col, pts)
+            pygame.draw.polygon(surf, (255, 250, 220), pts, 1)
+            return
+        px, py = self.player.x - cx, self.player.y - cy
+        a = math.atan2(ty - py, tx - px)
+        # clamp to an inset screen rectangle
+        hw, hh = W / 2 - margin, H / 2 - 80
+        ca, sa = math.cos(a), math.sin(a)
+        k = min(hw / abs(ca) if ca else 1e9, hh / abs(sa) if sa else 1e9)
+        ax, ay = W / 2 + ca * k, H / 2 + 20 + sa * k
+        pulse = 0.8 + 0.2 * math.sin(self.t * 5)
+        tip = (ax + ca * 14, ay + sa * 14)
+        left = (ax + math.cos(a + 2.5) * 12, ay + math.sin(a + 2.5) * 12)
+        right = (ax + math.cos(a - 2.5) * 12, ay + math.sin(a - 2.5) * 12)
+        pygame.draw.polygon(surf, tuple(int(c * pulse) for c in col), [tip, left, right])
+        dist = math.hypot(tgt.x - self.player.x, tgt.y - self.player.y) / TILE
+        text(surf, f"{dist:.0f}m", (ax - ca * 18, ay - sa * 18), 12, col, bold=True, anchor="center")
+
+    def draw_minimap(self, surf, top):
+        from systems import config
+        if not config.get("minimap"):
+            return
+        mw, mh = 176, 120
+        box = pygame.Rect(W - mw - 14, top, mw, mh)
+        panel(surf, box, alpha=190, border=self.accent, radius=6)
+        inner = box.inflate(-8, -8)
+        ms = self.MS
+        px, py = self.player.x / TILE * ms, self.player.y / TILE * ms
+        ox = int(px - inner.w / 2)
+        oy = int(py - inner.h / 2)
+        prev = surf.get_clip()
+        surf.set_clip(inner)
+        surf.blit(self.minimap, (inner.x - ox, inner.y - oy))
+        for d in self.drones:
+            tx, ty = int(d.x // TILE), int(d.y // TILE)
+            if (tx, ty) in self.explored and not d.disabled:
+                pygame.draw.circle(surf, d.color, (inner.x + int(d.x / TILE * ms) - ox, inner.y + int(d.y / TILE * ms) - oy), 3)
+        tgt = self.objective_target()
+        if tgt is not None:
+            k = 0.6 + 0.4 * math.sin(self.t * 5)
+            pygame.draw.circle(surf, (int(255 * k), int(210 * k), 90),
+                               (inner.x + int(tgt.x / TILE * ms) - ox, inner.y + int(tgt.y / TILE * ms) - oy), 4)
+        cxp, cyp = inner.x + int(px) - ox, inner.y + int(py) - oy
+        f = self.player.facing
+        pygame.draw.polygon(surf, CYAN, [(cxp + math.cos(f) * 7, cyp + math.sin(f) * 7),
+                                         (cxp + math.cos(f + 2.4) * 5, cyp + math.sin(f + 2.4) * 5),
+                                         (cxp + math.cos(f - 2.4) * 5, cyp + math.sin(f - 2.4) * 5)])
+        surf.set_clip(prev)
 
     def draw_prompt(self, surf, e, cx, cy):
         msg = e.prompt()
@@ -646,11 +771,8 @@ class Gameplay(Scene):
         text(surf, f"DATA {frag}/{TOTAL_FRAGMENTS}", (box.x + 140, box.y + 9), 12, (190, 150, 255), bold=True)
 
         # objective
-        obj = None
-        for o in self.level.get("objectives", []):
-            if not st.check([o["done"]])[0]:
-                obj = o["text"]
-                break
+        o = self.objective()
+        obj = o["text"] if o else None
         f = assets.font(15, True)
         lines = wrap(obj or "", 15, 262, True)
         ow = max([f.size(l)[0] for l in lines] + [200]) + 40
@@ -659,6 +781,7 @@ class Gameplay(Scene):
         text(surf, f"CH.{self.level['chapter']}  {self.level['title'].upper()}", (obox.x + 16, obox.y + 9), 11, GREY, bold=True)
         for i, ln in enumerate(lines):
             text(surf, ("> " if i == 0 else "  ") + ln, (obox.x + 16, obox.y + 28 + i * 20), 15, WHITE, bold=True)
+        self.draw_minimap(surf, obox.bottom + 8)
 
         # heat or countdown
         if st.heat is not None:
@@ -690,7 +813,7 @@ class Gameplay(Scene):
             if n > 1:
                 text(surf, str(n), (r.right - 3, r.bottom - 2), 11, WHITE, bold=True, anchor="bottomright")
             x += 44
-        text(surf, "TAB inventory   Q scan   F light   ESC pause", (W - 14, H - 12), 11, (120, 130, 150), anchor="bottomright")
+        text(surf, "TAB inventory   Q scan   F light   M map   ESC pause", (W - 14, H - 12), 11, (120, 130, 150), anchor="bottomright")
 
         # hazard warning
         if self.hazard_t > 0:

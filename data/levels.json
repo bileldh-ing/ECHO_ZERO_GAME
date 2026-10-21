@@ -343,23 +343,38 @@
   "objectives": [
    {
     "text": "Leave the charging bay",
-    "done": "flag:opened:d_bay"
+    "done": "flag:opened:d_bay",
+    "target": [
+     "d_bay"
+    ]
    },
    {
     "text": "Find a maintenance keycard",
-    "done": "item:keycard_maint"
+    "done": "item:keycard_maint",
+    "target": [
+     "key1"
+    ]
    },
    {
     "text": "Restore power to the central elevator",
-    "done": "flag:elevator_power"
+    "done": "flag:elevator_power",
+    "target": [
+     "p_elev"
+    ]
    },
    {
     "text": "Recover the airlock override code",
-    "done": "flag:airlock_code"
+    "done": "flag:airlock_code",
+    "target": [
+     "c_evac"
+    ]
    },
    {
     "text": "Ride the central elevator",
-    "done": "flag:never"
+    "done": "flag:never",
+    "target": [
+     "exit1"
+    ]
    }
   ],
   "intro": "ch1_intro",
@@ -369,9 +384,9 @@
   ],
   "map": [
    "                        #######             ",
-   " ##WW#WWW#              #.....#             ",
-   " #.......#              #.....# ##WW#WWWWW# ",
-   " #.......####W#WW##WW#W####.#####.........# ",
+   " ####WWW##              #.....#             ",
+   " #.......#              #.....# ######W#WW# ",
+   " #.......#W#WWWW#W####WW###.#####.........# ",
    " #........................................# ",
    " #.......#:..:..:..:..:..:..:..:#..::::::.# ",
    " #.......######.###########.#####.........# ",
@@ -893,23 +908,38 @@
   "objectives": [
    {
     "text": "Find a way through the garden",
-    "done": "flag:opened:d_atrium"
+    "done": "flag:opened:d_atrium",
+    "target": [
+     "d_atrium"
+    ]
    },
    {
     "text": "Restore power to the irrigation grid",
-    "done": "flag:garden_power"
+    "done": "flag:garden_power",
+    "target": [
+     "p_junction"
+    ]
    },
    {
     "text": "Activate irrigation",
-    "done": "flag:irrigation_on"
+    "done": "flag:irrigation_on",
+    "target": [
+     "s_irrig"
+    ]
    },
    {
     "text": "Recover the command key from the greenhouse",
-    "done": "item:command_key"
+    "done": "item:command_key",
+    "target": [
+     "ckey"
+    ]
    },
    {
     "text": "Reach the reactor lift",
-    "done": "flag:never"
+    "done": "flag:never",
+    "target": [
+     "exit2"
+    ]
    }
   ],
   "intro": "ch2_intro",
@@ -923,19 +953,19 @@
    "              #......#                          ",
    "              #......#                          ",
    "              #......#                          ",
-   "        ##WW######.########W##WWW##W#WW##       ",
+   "        #WWW#W####.###WW#W##W##WW#WW#WWW#       ",
    "        #....................#..........#       ",
-   "        #;;\"\"\"\";;\"\"\"\";;\"\"\"\";;#..........####W## ",
+   "        #;;\"\"\"\";;\"\"\"\";;\"\"\"\";;#..........#W#WW## ",
    "        #;;\"\"\"\";;\"\"\"\";;\"\"\"\";;#..........#.....# ",
    "        #;;\"\"\"\";;\"\"\"\";;\"\"\"\";;.................# ",
    "        #;;;;;;;;;;;;;;;;;;;;#..........#.....# ",
    "        #;;;;;;;;;;;;;;;;;;;;#..........#.....# ",
-   " #W#W#W##;;\"\"\"\";;\"\"\"\";;\"\"\"\";;#..........####### ",
+   " ####WW##;;\"\"\"\";;\"\"\"\";;\"\"\"\";;#..........####### ",
    " #......#;;\"\"\"\";;\"\"\"\";;\"\"\"\";;#..........#       ",
    " #......#;;\"\"\"\";;\"\"\"\";;\"\"\"\";;#..........#       ",
    " #.......;;;;;;;;;;;;;;;;;;;;#..........#       ",
    " #......#~~~,~~~~~,~~~~~,~~~~############       ",
-   " #......#;;;;;;;;;;;;;;;;;;;;############W#     ",
+   " #......#;;;;;;;;;;;;;;;;;;;;##############     ",
    " ########;;;;;;;;;;;;;;;;;;;;#;;;;;;;;;;;;#     ",
    " ########;;\"\"\"\";;\"\"\"\";;\"\"\"\";;#;\"\"\";;\"\"\";;;#     ",
    " #......#;;\"\"\"\";;\"\"\"\";;\"\"\"\";;#;\"\"\";;\"\"\";;;#     ",
@@ -1412,15 +1442,26 @@
   "objectives": [
    {
     "text": "Set the power allocation at the reactor console",
-    "done": "flag:allocation_done"
+    "done": "flag:allocation_done",
+    "target": [
+     "console"
+    ]
    },
    {
     "text": "Restart all three coolant pumps",
-    "done": "flag:coolant_all"
+    "done": "flag:coolant_all",
+    "target": [
+     "p_a",
+     "p_b",
+     "p_c"
+    ]
    },
    {
     "text": "Leave the reactor deck",
-    "done": "flag:never"
+    "done": "flag:never",
+    "target": [
+     "exit3"
+    ]
    }
   ],
   "intro": "ch3_intro",
@@ -1444,9 +1485,9 @@
   ],
   "map": [
    "                   ########                   ",
-   " ###WW#W#          #......#                   ",
+   " #W#W##W#          #......#                   ",
    " #......#          #......#                   ",
-   " #......##W####W##W###..#######W####W#W###### ",
+   " #......##WW#WWW#WW###..####W##W#W##W#W###WW# ",
    " #...................................#......# ",
    " #......#...................................# ",
    " #......#::::::::::::::::::::::::::::#......# ",
@@ -1454,7 +1495,7 @@
    "        ###############.##################### ",
    "              #,,,,,,,,,,,,,,,,,,#            ",
    "              #,,,,,,,,,,,,,,,,,,#            ",
-   "     #W##W#W###,,,,,,,,,,,,,,,,,,#W##WW#W##   ",
+   "     ###WWW####,,,,,,,,,,,,,,,,,,#WWW#W####   ",
    "     #........#,,,,,,,,,,,,,,,,,,#........#   ",
    "     #........#,,,,,,,,,,,,,,,,,,#........#   ",
    "     #.........,,,,,,,,,,,,,,,,,,.........#   ",
@@ -1513,6 +1554,78 @@
     "id": "holo",
     "w": 2,
     "h": 2
+   },
+   {
+    "type": "lamp",
+    "x": 12,
+    "y": 9,
+    "id": "lamp5",
+    "color": [
+     120,
+     170,
+     255
+    ],
+    "radius": 150
+   },
+   {
+    "type": "lamp",
+    "x": 23,
+    "y": 9,
+    "id": "lamp6",
+    "color": [
+     120,
+     170,
+     255
+    ],
+    "radius": 150
+   },
+   {
+    "type": "lamp",
+    "x": 12,
+    "y": 21,
+    "id": "lamp7",
+    "color": [
+     120,
+     170,
+     255
+    ],
+    "radius": 150
+   },
+   {
+    "type": "lamp",
+    "x": 23,
+    "y": 21,
+    "id": "lamp8",
+    "color": [
+     120,
+     170,
+     255
+    ],
+    "radius": 150
+   },
+   {
+    "type": "lamp",
+    "x": 30,
+    "y": 8,
+    "id": "lamp9",
+    "color": [
+     255,
+     110,
+     100
+    ],
+    "radius": 150
+   },
+   {
+    "type": "lamp",
+    "x": 38,
+    "y": 20,
+    "id": "lamp10",
+    "color": [
+     255,
+     110,
+     100
+    ],
+    "radius": 150
    },
    {
     "type": "terminal",
@@ -1577,13 +1690,13 @@
     "type": "cryo",
     "x": 11,
     "y": 13,
-    "id": "cryo9"
+    "id": "cryo15"
    },
    {
     "type": "cryo",
     "x": 23,
     "y": 17,
-    "id": "cryo10"
+    "id": "cryo16"
    },
    {
     "type": "door",
@@ -1614,7 +1727,7 @@
     "type": "lamp",
     "x": 14,
     "y": 3,
-    "id": "lamp14",
+    "id": "lamp20",
     "color": [
      140,
      220,
@@ -1704,15 +1817,27 @@
   "objectives": [
    {
     "text": "Recover crew recordings (2 needed)",
-    "done": "frags:frag_rec1,frag_rec2,frag_rec3,frag_rec4>=2"
+    "done": "frags:frag_rec1,frag_rec2,frag_rec3,frag_rec4>=2",
+    "target": [
+     "t_rec1",
+     "t_rec2",
+     "t_rec3",
+     "t_rec4"
+    ]
    },
    {
     "text": "Reconstruct the truth at the AI core",
-    "done": "flag:fate_chosen"
+    "done": "flag:fate_chosen",
+    "target": [
+     "t_truth"
+    ]
    },
    {
     "text": "Take the uplink lift",
-    "done": "flag:never"
+    "done": "flag:never",
+    "target": [
+     "exit4"
+    ]
    }
   ],
   "intro": "ch4_intro",
@@ -1722,18 +1847,18 @@
   ],
   "map": [
    "                                            ",
-   "            ###W######                      ",
+   "            #WW##W####                      ",
    "            #........#                      ",
    "            #........#                      ",
    "            #........#                      ",
    "            #........#                      ",
-   "            #........#     ###W###W#WW###   ",
+   "            #........#     #####W#WWW#W##   ",
    "            #........#     #............#   ",
-   "        #W######.######W##W#............#   ",
+   "        #W#W####.######W####............#   ",
    "        #..................#............#   ",
    "        #..................#............#   ",
    "        #..................#............#   ",
-   " #####W##..................#............#   ",
+   " #WWW####..................#............#   ",
    " #......#..................#............#   ",
    " #......#..................#............#   ",
    " #.......::::::::::::::::::.............#   ",
@@ -2089,15 +2214,24 @@
   "objectives": [
    {
     "text": "Reach the transmitter array before the reactor fails",
-    "done": "flag:opened:d_start"
+    "done": "flag:opened:d_start",
+    "target": [
+     "d_start"
+    ]
    },
    {
     "text": "Align the antenna array",
-    "done": "flag:antenna_aligned"
+    "done": "flag:antenna_aligned",
+    "target": [
+     "p_ant"
+    ]
    },
    {
     "text": "Send the last signal",
-    "done": "flag:never"
+    "done": "flag:never",
+    "target": [
+     "t_final"
+    ]
    }
   ],
   "intro": "ch5_intro",
@@ -2110,19 +2244,19 @@
    "                                                        ",
    "                                                        ",
    "                                                        ",
-   "                          ####WW##W##WWWW#WWWW#WW##W### ",
+   "                          #W##W#W#W#W#W##WW#####WWW#### ",
    "                          #......#............#.......# ",
    "                          #...........................# ",
    "                          #......#............#.......# ",
    "                          #......##############.......# ",
    " #W#WWW#                  #......#            #.......# ",
-   " #.....###WW#W###WW#W#W##W#......#            #.......# ",
+   " #.....#W#W#####W####W#####......#            #.......# ",
    " #.....#.........................#            #.......# ",
    " #......::::::::::::::::::.......#            #.......# ",
    " #.....#.........................#            #.......# ",
    " #.....####################......#            #.......# ",
    " #######                  #......#            #.......# ",
-   "                          #......##WW#W########.......# ",
+   "                          #......#W##W##WW#WW##.......# ",
    "                          #......#............#.......# ",
    "                          #...........................# ",
    "                          #......#............#.......# ",

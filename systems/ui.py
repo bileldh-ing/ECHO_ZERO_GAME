@@ -59,7 +59,7 @@ def panel(surf, rect, alpha=215, border=CYAN, radius=8, glow=True):
         pygame.draw.line(s, (*border, 255), (cx, cy), (cx + dx * L, cy), 3)
         pygame.draw.line(s, (*border, 255), (cx, cy), (cx, cy + dy * L), 3)
     if len(_cache) > 300:
-        for k in [k for k in _cache if isinstance(k, tuple)][:100]:
+        for k in [k for k in _cache if isinstance(k, tuple) and k[0] == "panel"][:100]:
             _cache.pop(k, None)
     _cache[key] = s
     surf.blit(s, r)
@@ -108,13 +108,15 @@ def scanlines():
     return _cache["scan"]
 
 
-def post_fx():
-    """Vignette and scanlines merged into one overlay."""
-    if "post" not in _cache:
+def post_fx(scan=True):
+    """Vignette (and optional scanlines) merged into one overlay."""
+    key = ("post", bool(scan))
+    if key not in _cache:
         s = vignette().copy()
-        s.blit(scanlines(), (0, 0))
-        _cache["post"] = s.convert_alpha() if pygame.display.get_surface() else s
-    return _cache["post"]
+        if scan:
+            s.blit(scanlines(), (0, 0))
+        _cache[key] = s.convert_alpha() if pygame.display.get_surface() else s
+    return _cache[key]
 
 
 def icon(name, size=28):

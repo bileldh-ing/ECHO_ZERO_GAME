@@ -6,7 +6,7 @@ import pygame
 
 from settings import W, H, CYAN, WHITE, GREY, RED
 from scenes.base import Scene
-from scenes.overlays import Controls
+from scenes.overlays import Controls, Options
 from systems import assets, save_manager
 from systems.state import GameState
 from systems.ui import post_fx, text, vignette, scanlines
@@ -34,7 +34,7 @@ class Menu(Scene):
         self.options = []
         if save_manager.exists():
             self.options.append("Continue")
-        self.options += ["New Game", "Controls", "Quit"]
+        self.options += ["New Game", "Controls", "Options", "Quit"]
         self.sel = min(self.sel, len(self.options) - 1)
 
     def on_enter(self):
@@ -65,6 +65,9 @@ class Menu(Scene):
             elif o == "Controls":
                 assets.play("select", 0.5)
                 self.game.push(Controls(self.game))
+            elif o == "Options":
+                assets.play("select", 0.5)
+                self.game.push(Options(self.game))
             else:
                 self.game.running = False
         elif e.key == pygame.K_ESCAPE:

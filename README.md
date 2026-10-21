@@ -1,8 +1,20 @@
 # ECHO//ZERO — The Last Signal
 
+![tests](https://github.com/bileldh-ing/ECHO_ZERO_GAME/actions/workflows/tests.yml/badge.svg)
+![python](https://img.shields.io/badge/python-3.9%2B-blue) ![pygame](https://img.shields.io/badge/pygame--ce-2.x-green)
+
 A 2D top-down sci-fi action-adventure with puzzles, stealth and light survival, built in Python with pygame.
+Every sprite, tile, sound effect and music loop is generated from code.
+
+![Gameplay](docs/gameplay.gif)
 
 You are **ECHO**, a small maintenance robot that wakes aboard the abandoned orbital station **AURORA-9**. The crew is gone, the reactor is failing, and the station AI **HALCYON** insists everything is functioning normally.
+
+| | |
+|---|---|
+| ![Title](docs/menu.png) | ![Stealth](docs/stealth.png) |
+| ![Power routing puzzle](docs/puzzle.png) | ![Reactor](docs/reactor.png) |
+| ![Power allocation](docs/console.png) | ![Crew recording](docs/dialogue.png) |
 
 ## Run it
 
@@ -25,7 +37,9 @@ To rebuild the level maps from their room descriptions: `python tools/build_leve
 | Q | Sensor scan: highlights items and machinery, reveals drone cones |
 | Tab | Inventory and recovered data fragments |
 | Esc | Pause |
+| M | Toggle minimap |
 | F11 | Fullscreen |
+| Gamepad | Left stick move, A interact, B sprint, X light, Y scan, Start pause |
 
 ## The story — five chapters, three endings
 
@@ -50,6 +64,17 @@ Your choices change what's possible:
 - **Drones** — patrol paths, see in a light cone blocked by walls and crates, hear sprinting, investigate, chase with grid pathfinding, and shock your battery.
 - **Lighting** — dynamic light map with a wall-occluded flashlight cone, baked lamps, glow pass, particles, screen shake, vignette.
 - **Saves** — automatic checkpoint at each chapter start and every charging dock (`save.json`).
+- **Navigation** — fog-of-war minimap and an objective marker that points to the nearest unfinished task.
+- **Options** — music/effects volume, screen shake, CRT scanlines and minimap toggles (`config.json`).
+- **Game feel** — eased camera with look-ahead, hit-stop on damage, typewriter dialogue, chapter title cards, studio splash.
+
+## Tests
+
+```bash
+python tests/test_puzzles.py        # puzzle + state unit tests
+python tests/test_playthrough.py    # headless bot plays all 5 chapters, every puzzle, ending C, and a death/reboot
+```
+Both run on every push via GitHub Actions.
 
 ## Project structure
 
@@ -61,8 +86,14 @@ echo-zero/
 ├── entities/               player, drone, interactables (doors, terminals, panels...)
 ├── systems/                collisions, lighting, particles, inventory, puzzles, state, save manager, ui
 ├── data/                   levels.json, dialogue.json
-├── tools/                  generate_assets.py, build_levels.py
+├── tools/                  generate_assets.py, build_levels.py (level authoring + reachability validator)
+├── tests/                  unit tests and headless playthrough
+├── docs/                   screenshots and gameplay GIF
 └── assets/                 sprites, tiles, ui, sounds, music, fonts
 ```
 
 Fonts: DejaVu Sans Mono (Bitstream Vera / DejaVu licence).
+
+## Credits
+
+Design, code and procedural assets: **Bilel Dhahri**. Title key art supplied by the author.

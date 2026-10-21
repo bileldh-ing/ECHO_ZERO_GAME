@@ -56,8 +56,11 @@ class Level:
     def door(self, x, y, eid=None, **props):
         return self.ent("door", x, y, eid, **props)
 
-    def objective(self, text, done):
-        self.d["objectives"].append(dict(text=text, done=done))
+    def objective(self, text, done, target=None):
+        o = dict(text=text, done=done)
+        if target:
+            o["target"] = target if isinstance(target, list) else [target]
+        self.d["objectives"].append(o)
 
     # --- output
     def windows(self, seed):
@@ -193,11 +196,11 @@ def chapter1():
           locked_msg="Elevator has no power.", next="ch2", dialogue="ch1_outro")
     L.ent("trigger", 34, 4, "t_air", w=2, h=2, dialogue="ch1_airlock")
 
-    L.objective("Leave the charging bay", "flag:opened:d_bay")
-    L.objective("Find a maintenance keycard", "item:keycard_maint")
-    L.objective("Restore power to the central elevator", "flag:elevator_power")
-    L.objective("Recover the airlock override code", "flag:airlock_code")
-    L.objective("Ride the central elevator", "flag:never")
+    L.objective("Leave the charging bay", "flag:opened:d_bay", "d_bay")
+    L.objective("Find a maintenance keycard", "item:keycard_maint", "key1")
+    L.objective("Restore power to the central elevator", "flag:elevator_power", "p_elev")
+    L.objective("Recover the airlock override code", "flag:airlock_code", "c_evac")
+    L.objective("Ride the central elevator", "flag:never", "exit1")
     return L.build((4, 4))
 
 
@@ -276,11 +279,11 @@ def chapter2():
     L.door(40, 9, "d_exit", requires=["item:command_key"], locked_msg="Command key required.")
     L.ent("exit", 44, 9, "exit2", next="ch3", dialogue="ch2_outro")
 
-    L.objective("Find a way through the garden", "flag:opened:d_atrium")
-    L.objective("Restore power to the irrigation grid", "flag:garden_power")
-    L.objective("Activate irrigation", "flag:irrigation_on")
-    L.objective("Recover the command key from the greenhouse", "item:command_key")
-    L.objective("Reach the reactor lift", "flag:never")
+    L.objective("Find a way through the garden", "flag:opened:d_atrium", "d_atrium")
+    L.objective("Restore power to the irrigation grid", "flag:garden_power", "p_junction")
+    L.objective("Activate irrigation", "flag:irrigation_on", "s_irrig")
+    L.objective("Recover the command key from the greenhouse", "item:command_key", "ckey")
+    L.objective("Reach the reactor lift", "flag:never", "exit2")
     return L.build((4, 15))
 
 
@@ -337,9 +340,9 @@ def chapter3():
     L.door(37, 5, "d_exit", requires=["flag:reactor_stable"], locked_msg="Containment lock: reactor unstable.")
     L.ent("exit", 42, 5, "exit3", next="ch4", dialogue="ch3_outro")
 
-    L.objective("Set the power allocation at the reactor console", "flag:allocation_done")
-    L.objective("Restart all three coolant pumps", "flag:coolant_all")
-    L.objective("Leave the reactor deck", "flag:never")
+    L.objective("Set the power allocation at the reactor console", "flag:allocation_done", "console")
+    L.objective("Restart all three coolant pumps", "flag:coolant_all", ["p_a", "p_b", "p_c"])
+    L.objective("Leave the reactor deck", "flag:never", "exit3")
     return L.build((4, 4))
 
 
@@ -359,6 +362,10 @@ def chapter4():
     L.ent("lamp", 4, 13, color=[140, 190, 255], radius=150)
     L.door(8, 15, "d_hall")
     L.ent("holotable", 16, 13, "holo", w=2, h=2)
+    for (x, y) in ((12, 9), (23, 9), (12, 21), (23, 21)):
+        L.ent("lamp", x, y, color=[120, 170, 255], radius=150)
+    for (x, y) in ((30, 8), (38, 20)):
+        L.ent("lamp", x, y, color=[255, 110, 100], radius=150)
     L.ent("terminal", 10, 9, "t_rec1", dialogue="ch4_rec1", fragment="frag_rec1")
     L.ent("terminal", 25, 21, "t_rec2", dialogue="ch4_rec2", fragment="frag_rec2")
     L.ent("drone", 10, 11, "dr1", path=[[10, 11], [25, 11], [25, 19], [10, 19]], requires_off="security_off")
@@ -387,9 +394,9 @@ def chapter4():
     L.ent("exit", 39, 22, "exit4", requires=["flag:fate_chosen"], locked_msg="HALCYON will not release the uplink yet.",
           next="ch5", dialogue="ch4_outro")
 
-    L.objective("Recover crew recordings (2 needed)", "frags:frag_rec1,frag_rec2,frag_rec3,frag_rec4>=2")
-    L.objective("Reconstruct the truth at the AI core", "flag:fate_chosen")
-    L.objective("Take the uplink lift", "flag:never")
+    L.objective("Recover crew recordings (2 needed)", "frags:frag_rec1,frag_rec2,frag_rec3,frag_rec4>=2", ["t_rec1", "t_rec2", "t_rec3", "t_rec4"])
+    L.objective("Reconstruct the truth at the AI core", "flag:fate_chosen", "t_truth")
+    L.objective("Take the uplink lift", "flag:never", "exit4")
     return L.build((4, 15))
 
 
@@ -442,9 +449,9 @@ def chapter5():
     L.ent("terminal", 50, 15, "t_final", requires=["flag:antenna_aligned"], locked_dialogue="ch5_need_antenna",
           dialogue="ch5_final", choice="ending")
 
-    L.objective("Reach the transmitter array before the reactor fails", "flag:opened:d_start")
-    L.objective("Align the antenna array", "flag:antenna_aligned")
-    L.objective("Send the last signal", "flag:never")
+    L.objective("Reach the transmitter array before the reactor fails", "flag:opened:d_start", "d_start")
+    L.objective("Align the antenna array", "flag:antenna_aligned", "p_ant")
+    L.objective("Send the last signal", "flag:never", "t_final")
     return L.build((3, 11))
 
 
